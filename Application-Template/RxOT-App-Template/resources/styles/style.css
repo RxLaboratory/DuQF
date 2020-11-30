@@ -1,0 +1,110 @@
+/* MAIN */
+
+*{
+        outline: none;
+}
+
+MainWindow, QDialog {
+    background-color: @color-dark-grey;
+}
+
+QWidget {
+    font-weight:500;
+}
+/* TOOL BUTTONS */
+
+QToolButton {
+    background: none;
+    padding: @padding-small;
+    border-radius: @padding-small;
+}
+
+QToolButton::menu-indicator {
+    image: none;
+}
+
+/* MENUS */
+
+QMenu {
+  background-color: @color-medium-grey;
+  margin: @padding-large;
+  border:none;
+}
+
+QMenu::item {
+    color: @color-very-dark-grey;
+    padding-left: 23px;
+    padding-top: @padding-small;
+    padding-bottom: @padding-small;
+}
+
+QMenu::item:selected {
+    color: @color-light-grey;
+    border:none;
+}
+
+QMenu::separator {
+  height: 1px;
+  background: @color-less-dark-grey;
+  margin-top: @padding-small;
+  margin-bottom: @padding-small;
+}
+
+/* TOOLBAR */
+
+QToolBar {
+        background: @color-medium-grey;
+        border: none;
+        padding: @margin;
+}
+
+#windowButton {
+    width: @small-button-size;
+    height: @small-button-size;
+}
+
+QToolBar QToolButton:hover {
+    background-color: @color-dark-grey;
+}
+
+QToolBar QLabel {
+    color: @color-light-grey;
+}
+/* STATUSBAR */
+
+QStatusBar {
+    background-color: @color-very-dark-grey;
+    padding: @margin;
+}
+
+QStatusBar QLabel {
+    color: @color-less-light-grey;
+}
+
+QStatusBar QSizeGrip {
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1,
+      stop: 0.5 @color-very-dark-grey, stop: 0.55 @color-medium-grey);
+}
+
+QStatusBar QToolButton {
+    width: @very-small-button-size;
+    height: @very-small-button-size;
+    padding: @margin;
+    border-radius: @margin;
+}
+
+QStatusBar QToolButton:hover {
+    background-color: @color-medium-grey;
+}
+
+/* SPLASH SCREEN */
+
+QSplashScreen QProgressBar {
+    height: @progress-size;
+    text-align: left;
+}
+
+QSplashScreen QLabel {
+    background: transparent;
+    color: @color-dark-grey;
+}

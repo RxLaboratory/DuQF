@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="app">resources/icons/icon.svg</file>
+        <file alias="maximize">resources/icons/maximize.svg</file>
+        <file alias="minimize">resources/icons/minimize.svg</file>
+        <file alias="quit">resources/icons/quit.svg</file>
+        <file alias="unmaximize">resources/icons/unmaximize.svg</file>
+        <file alias="settings">resources/icons/go-to-settings.svg</file>
+        <file alias="help">resources/icons/help.svg</file>
+        <file alias="bug-report">resources/icons/bug-report.svg</file>
+        <file alias="chat">resources/icons/chat.svg</file>
+        <file alias="documentation">resources/icons/documentation.svg</file>
+        <file alias="forum">resources/icons/forum.svg</file>
+        <file alias="qt">resources/icons/qt.svg</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="splash">resources/images/splash.png</file>
+    </qresource>
+    <qresource prefix="/styles">
+        <file alias="default">resources/styles/style.css</file>
+        <file alias="default-values">resources/styles/style-values.rui</file>
+    </qresource>
+</RCC>
