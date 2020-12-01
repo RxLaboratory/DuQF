@@ -6,6 +6,11 @@
 #include <QFontDatabase>
 #include <QFileInfo>
 #include <QApplication>
+#include <QtDebug>
+#include <QRegularExpression>
+#include <QMainWindow>
+#include <QToolBar>
+#include <QToolButton>
 
 class DuUI
 {
@@ -105,7 +110,6 @@ public:
 
     #ifdef QT_DEBUG
         qDebug() << "DuUI: CSS Ready";
-        qDebug() << css;
     #endif
 
         return css;
@@ -122,6 +126,28 @@ public:
         QFontDatabase::addApplicationFont(":/fonts/calibri_bold_italic");
 
         qApp->setFont(QFont(family,10,500),"QWidget");
+    }
+
+    static void setToolButtonStyle(Qt::ToolButtonStyle style)
+    {
+        foreach( QWidget *w, qApp->allWidgets())
+        {
+            if(QMainWindow *mw = qobject_cast<QMainWindow*>(w))
+            {
+                mw->setToolButtonStyle(style);
+            }
+            else if (QToolBar *tb = qobject_cast<QToolBar*>(w))
+            {
+                tb->setToolButtonStyle(style);
+            }
+            else if (QToolButton *tb = qobject_cast<QToolButton*>(w))
+            {
+                if (tb->objectName() == "windowButton") continue;
+                if (tb->text() == "") continue;
+                if (tb->icon().isNull()) continue;
+                tb->setToolButtonStyle(style);
+            }
+        }
     }
 };
 

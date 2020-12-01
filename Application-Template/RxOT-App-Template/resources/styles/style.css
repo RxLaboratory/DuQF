@@ -11,17 +11,101 @@ MainWindow, QDialog {
 QWidget {
     font-weight:500;
 }
+
+/* LABELS */
+
+QLabel {
+    color: @color-less-light-grey;
+}
+
 /* TOOL BUTTONS */
 
 QToolButton {
     background: none;
     padding: @padding-small;
     border-radius: @padding-small;
+    color: @color-light-grey ;
 }
 
 QToolButton::menu-indicator {
     image: none;
 }
+
+QToolButton:hover {
+    background-color: @color-medium-grey;
+}
+
+/* COMBO BOX */
+
+QComboBox {
+    background-color: @color-less-dark-grey;
+    border-radius: @padding-small;
+    padding: @padding-small;
+    border:none;
+    color: @color-light-grey;
+}
+
+QComboBox::item {
+    background-color: @color-medium-grey;
+    color: @color-very-dark-grey;
+}
+
+QComboBox:hover {
+    background-color: @color-medium-grey;
+}
+
+QComboBox::item:selected{
+    color: @color-light-grey;
+    border:none;
+}
+
+QComboBox::item:checked{
+    color: @color-light-grey;
+}
+
+QComboBox::drop-down {
+    border:none;
+}
+
+QComboBox::indicator {
+    image:none;
+}
+
+QComboBox::down-arrow {
+      image: url(:/icons/select);
+      width: 10px;
+      height: 10px;
+      padding-right: @padding-small;
+}
+
+QComboBox QAbstractItemView {
+    background-color: @color-medium-grey;
+    selection-color: @color-light-grey;
+    selection-background-color: @color-medium-grey;
+    padding-left: @padding-large;
+}
+
+
+/* LISTS */
+
+QListWidget {
+    background-color: @color-very-dark-grey;
+}
+
+QListWidget::item {
+    color: @color-less-light-grey;
+    padding: @padding-large;
+    border-left: @padding-large;
+}
+
+QListWidget::item:hover {
+    background-color: @color-darker-grey;
+ }
+
+QListWidget::item:selected {
+    color: @color-light-grey;
+    background-color: @color-dark-grey;
+ }
 
 /* MENUS */
 
@@ -45,9 +129,15 @@ QMenu::item:selected {
 
 QMenu::separator {
   height: 1px;
-  background: @color-less-dark-grey;
+  background-color: @color-less-dark-grey;
   margin-top: @padding-small;
   margin-bottom: @padding-small;
+}
+
+/* TITLE BAR */
+
+#titleWidget {
+    background-color: @color-less-dark-grey;
 }
 
 /* TOOLBAR */
@@ -95,6 +185,10 @@ QStatusBar QToolButton {
 
 QStatusBar QToolButton:hover {
     background-color: @color-medium-grey;
+}
+
+QStatusBar QToolButton:checked {
+    background-color: @color-abyss-grey;
 }
 
 /* SPLASH SCREEN */

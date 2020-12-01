@@ -20,6 +20,8 @@ CONFIG += c++11
 SOURCES += \
     duqf-utils/language-utils.cpp \
     duqf-utils/utils.cpp \
+    duqf-widgets/appearancesettingswidget.cpp \
+    duqf-widgets/settingswidget.cpp \
     duqf-widgets/toolbarspacer.cpp \
     main.cpp \
     mainwindow.cpp
@@ -30,10 +32,14 @@ HEADERS += \
     duqf-app/app-version.h \
     duqf-utils/language-utils.h \
     duqf-utils/utils.h \
+    duqf-widgets/appearancesettingswidget.h \
+    duqf-widgets/settingswidget.h \
     duqf-widgets/toolbarspacer.h \
     mainwindow.h
 
 FORMS += \
+    duqf-widgets/appearancesettingswidget.ui \
+    duqf-widgets/settingswidget.ui \
     duqf-widgets/toolbarspacer.ui \
     mainwindow.ui
 

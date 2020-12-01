@@ -12,6 +12,12 @@
         <file alias="documentation">resources/icons/documentation.svg</file>
         <file alias="forum">resources/icons/forum.svg</file>
         <file alias="qt">resources/icons/qt.svg</file>
+        <file alias="close">resources/icons/close.svg</file>
+        <file alias="color">resources/icons/color.svg</file>
+        <file alias="select">resources/icons/select.svg</file>
+        <file alias="load-file">resources/icons/load-file.svg</file>
+        <file alias="property">resources/icons/property.svg</file>
+        <file alias="save-file">resources/icons/save-file.svg</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="splash">resources/images/splash.png</file>

@@ -48,10 +48,11 @@ void MainWindow::duqf_initUi()
 
     // version in statusbar
     mainStatusBar->addPermanentWidget(new QLabel("v" + QString(STR_VERSION)));
-    QToolButton *settingsButton = new QToolButton();
-    settingsButton->setIcon(QIcon(":/icons/settings"));
-    settingsButton->setToolTip("Go to Settings");
-    mainStatusBar->addPermanentWidget(settingsButton);
+    duqf_settingsButton = new QToolButton();
+    duqf_settingsButton->setIcon(QIcon(":/icons/settings"));
+    duqf_settingsButton->setToolTip("Go to Settings");
+    duqf_settingsButton->setCheckable(true);
+    mainStatusBar->addPermanentWidget(duqf_settingsButton);
     QToolButton *helpButton = new QToolButton();
     helpButton->setIcon(QIcon(":/icons/help"));
     helpButton->setToolTip("Get Help");
@@ -99,12 +100,29 @@ void MainWindow::duqf_initUi()
     helpButton->setMenu(helpMenu);
     mainStatusBar->addPermanentWidget(helpButton);
 
+    // ========= SETTINGS ========
+
+    SettingsWidget *settingsWidget = new SettingsWidget();
+    duqf_settingsLayout->addWidget(settingsWidget);
+
     // ======== STYLE ========
 
     //Re-set StyleSheet
-    DuUI::updateCSS(":/styles/default", "dume");
+    QString cssFile = settings.value("appearance/cssFile", ":/styles/default").toString();
+    DuUI::updateCSS(cssFile);
     //and font
     DuUI::setFont();
+    //and tool buttons
+    int styleIndex = settings.value("appearance/toolButtonStyle", 2).toInt();
+    Qt::ToolButtonStyle style = Qt::ToolButtonTextUnderIcon;
+    if (styleIndex == 0) style = Qt::ToolButtonIconOnly;
+    else if (styleIndex == 1) style = Qt::ToolButtonTextOnly;
+    else if (styleIndex == 2) style = Qt::ToolButtonTextUnderIcon;
+    else if (styleIndex == 3) style = Qt::ToolButtonTextBesideIcon;
+    DuUI::setToolButtonStyle(style);
+
+
+    duqf_closeSettingsButton->setObjectName("windowButton");
 
     // ====== CONNECTIONS ======
     connect(duqf_maximizeButton,SIGNAL(clicked()),this,SLOT(duqf_maximize()));
@@ -112,6 +130,8 @@ void MainWindow::duqf_initUi()
     connect(quitButton,SIGNAL(clicked()),this,SLOT(close()));
 
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(duqf_settingsButton, SIGNAL(clicked(bool)), this, SLOT(duqf_settings(bool)));
+    connect(duqf_closeSettingsButton, SIGNAL(clicked()), this, SLOT(duqf_closeSettings()));
 }
 
 void MainWindow::duqf_maximize(bool max)
@@ -151,6 +171,24 @@ void MainWindow::duqf_chat()
 void MainWindow::duqf_doc()
 {
     QDesktopServices::openUrl ( QUrl( URL_DOC ) );
+}
+
+void MainWindow::duqf_settings(bool checked)
+{
+    duqf_settingsButton->setChecked(checked);
+    if (checked)
+    {
+        mainStack->setCurrentIndex(1);
+    }
+    else
+    {
+        mainStack->setCurrentIndex(0);
+    }
+}
+
+void MainWindow::duqf_closeSettings()
+{
+    duqf_settings(false);
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
@@ -196,3 +234,4 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
       return QObject::eventFilter(obj, event);
   }
 }
+

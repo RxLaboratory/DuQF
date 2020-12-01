@@ -5,12 +5,15 @@
 #include "duqf-app/app-version.h"
 #include "duqf-app/app-style.h"
 #include "duqf-widgets/toolbarspacer.h"
+#include "duqf-widgets/settingswidget.h"
 
 #include <QMouseEvent>
 #include <QLabel>
 #include <QToolButton>
 #include <QMenu>
 #include <QDesktopServices>
+#include <QtDebug>
+#include <QSettings>
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
@@ -18,14 +21,6 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
 
 public:
     explicit MainWindow(int argc, char *argv[], QWidget *parent = nullptr);
-
-public slots:
-    void duqf_maximize(bool max);
-    void duqf_maximize();
-    void duqf_bugReport();
-    void duqf_forum();
-    void duqf_chat();
-    void duqf_doc();
 
 private:
     // ========= RxOT UI ==============
@@ -43,9 +38,20 @@ private:
      */
     QPoint duqf_dragPosition;
     QToolButton *duqf_maximizeButton;
+    QToolButton *duqf_settingsButton;
+    QSettings settings;
+
+private slots:
+    void duqf_maximize(bool max);
+    void duqf_maximize();
+    void duqf_bugReport();
+    void duqf_forum();
+    void duqf_chat();
+    void duqf_doc();
+    void duqf_settings(bool checked = true);
+    void duqf_closeSettings();
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
-
 };
 #endif // MAINWINDOW_H
