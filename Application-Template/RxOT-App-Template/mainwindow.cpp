@@ -31,7 +31,8 @@ void MainWindow::duqf_initUi()
 
     // ==== TOOLBAR BUTTONS
     mainToolBar->addWidget(new ToolBarSpacer());
-    mainToolBar->addWidget(new QLabel(STR_FILEDESCRIPTION));
+    title = new QLabel(STR_FILEDESCRIPTION);
+    mainToolBar->addWidget(title);
     //minimize
 #ifndef Q_OS_MAC
     QToolButton *minimizeButton = new QToolButton();

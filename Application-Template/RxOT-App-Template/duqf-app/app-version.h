@@ -1,9 +1,6 @@
 #ifndef APPVERSION_H
 #define APPVERSION_H
 
-#ifndef VERSION_H
-#define VERSION_H
-
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 0
 #define VERSION_BUILD 1
@@ -39,8 +36,5 @@
 
 #define APP_ICON ":/icons/app"
 #define SPLASH_IMAGE ":/images/splash"
-
-#endif // VERSION_H
-
 
 #endif // APPVERSION_H

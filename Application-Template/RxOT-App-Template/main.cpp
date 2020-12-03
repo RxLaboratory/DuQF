@@ -16,14 +16,15 @@ int main(int argc, char *argv[])
     // process CLI arguments
     if ( processArgs(argc, argv) ) return 0;
 
-    // show splashscreen
-    a.showSplashScreen();
-    DuSplashScreen *s = a.splashScreen();
-
     // settings
     QCoreApplication::setOrganizationName(STR_COMPANYNAME);
     QCoreApplication::setOrganizationDomain(STR_COMPANYDOMAIN);
     QCoreApplication::setApplicationName(STR_PRODUCTNAME);
+    QCoreApplication::setApplicationVersion(STR_VERSION);
+
+    // show splashscreen
+    a.showSplashScreen();
+    DuSplashScreen *s = a.splashScreen();
 
     // build and show UI
     s->newMessage("Building UI");

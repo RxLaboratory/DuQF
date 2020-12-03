@@ -46,6 +46,7 @@ private:
     QToolButton *duqf_settingsButton;
     QSettings settings;
     SettingsWidget *settingsWidget;
+    QLabel *title;
 
 private slots:
     void duqf_maximize(bool max);

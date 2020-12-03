@@ -369,6 +369,7 @@ QProgressBar::chunk:disabled {
 
 QListWidget {
     background-color: @color-very-dark-grey;
+    border: none;
 }
 
 QListWidget::item {
@@ -442,6 +443,11 @@ QToolBar QToolButton:pressed {
 
 QToolBar QLabel {
     color: @color-light-grey;
+}
+
+QToolBar QToolButton:disabled {
+    background: @color-medium-grey;
+    color: @color-less-light-grey;
 }
 
 /* STATUSBAR */
