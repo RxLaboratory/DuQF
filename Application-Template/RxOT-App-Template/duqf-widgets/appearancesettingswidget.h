@@ -13,6 +13,7 @@
 #include <QToolButton>
 #include <QSettings>
 #include <QFileDialog>
+#include <QStyleFactory>
 
 class AppearanceSettingsWidget : public QWidget, private Ui::MainSettingsWidget
 {
@@ -23,6 +24,7 @@ public:
 private slots:
     void on_toolsComboBox_currentIndexChanged(int index);
     void on_styleComboBox_currentIndexChanged(int index);
+    void on_fontComboBox_currentFontChanged(const QFont &f);
 
 private:
     QSettings settings;

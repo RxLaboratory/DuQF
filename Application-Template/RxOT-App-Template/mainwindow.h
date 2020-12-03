@@ -6,6 +6,7 @@
 #include "duqf-app/app-style.h"
 #include "duqf-widgets/toolbarspacer.h"
 #include "duqf-widgets/settingswidget.h"
+#include "testwidgets.h"
 
 #include <QMouseEvent>
 #include <QLabel>
@@ -29,6 +30,10 @@ private:
      */
     void duqf_initUi();
     /**
+     * @brief duqf_setStyle Called once to set the UI Style after all ui have been created
+     */
+    void duqf_setStyle();
+    /**
      * @brief Is the tool bar currently clicked or not
      */
     bool duqf_toolBarClicked;
@@ -40,6 +45,7 @@ private:
     QToolButton *duqf_maximizeButton;
     QToolButton *duqf_settingsButton;
     QSettings settings;
+    SettingsWidget *settingsWidget;
 
 private slots:
     void duqf_maximize(bool max);

@@ -1,6 +1,8 @@
 #ifndef APPSTYLE_H
 #define APPSTYLE_H
 
+#include "app-version.h"
+
 #include <QString>
 #include <QStringList>
 #include <QFontDatabase>
@@ -19,13 +21,13 @@ public:
     {
 
     }
-    static void updateCSS(QString cssFileName, QString appName = "")
+    static void updateCSS(QString cssFileName)
     {
         qApp->setStyleSheet("");
         QStringList cssFiles(cssFileName);
         //check if there's a dume file to include
         QFileInfo cssFileInfo(cssFileName);
-        QString includeName = cssFileInfo.completeBaseName() + "-" + appName;
+        QString includeName = cssFileInfo.completeBaseName() + "-" + QString(STR_INTERNALNAME).toLower();
         QString includePath = cssFileInfo.path() + "/" + includeName + ".css";
         QFile includeFile(includePath);
         includePath = cssFileInfo.path() + "/" + includeName;
@@ -57,7 +59,7 @@ public:
      * @param cssFileNames The file names (with complete path) of the CSS
      * @return the CSS string
      */
-    static QString loadCSS(QStringList cssFileNames)
+    static QString loadCSS(QStringList cssFileNames, QString styleValues = "")
     {
         QString css = "";
 
@@ -78,13 +80,11 @@ public:
         //replace variables
         //find values
         QFileInfo cssInfo(cssFileNames[0]);
-        QString baseName = cssInfo.path() + "/" + cssInfo.completeBaseName();
-        QFile valuesFile(baseName + "-values.rui");
-        if (!valuesFile.exists()) valuesFile.setFileName(baseName + "-values");
-        if (!valuesFile.exists()) valuesFile.setFileName(baseName + "-values.txt");
-        if (!valuesFile.exists()) valuesFile.setFileName(baseName + ".val");
-        if (!valuesFile.exists()) valuesFile.setFileName(baseName + ".txt");
-        if (!valuesFile.exists()) valuesFile.setFileName(baseName + ".rui");
+        if (styleValues =="")
+        {
+            styleValues = cssInfo.path() + "/" + cssInfo.completeBaseName() + "-values";
+        }
+        QFile valuesFile(styleValues);
         if (valuesFile.exists())
         {
             if (valuesFile.open(QFile::ReadOnly))
@@ -115,15 +115,26 @@ public:
         return css;
     }
 
-    static void setFont(QString family = "Calibri")
+    static void setFont(QString family = "Ubuntu", int size=10, int weight=400)
     {
-        //add fonts
-        QFontDatabase::addApplicationFont(":/fonts/calibri");
-        QFontDatabase::addApplicationFont(":/fonts/calibri_bold");
-        QFontDatabase::addApplicationFont(":/fonts/calibri_italic");
-        QFontDatabase::addApplicationFont(":/fonts/calibri_light");
-        QFontDatabase::addApplicationFont(":/fonts/calibri_light_italic");
-        QFontDatabase::addApplicationFont(":/fonts/calibri_bold_italic");
+        if (family == "Ubuntu")
+        {
+            //add fonts
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-B");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-BI");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-C");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-L");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-LI");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-M");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-MI");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-R");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-RI");
+            QFontDatabase::addApplicationFont(":/fonts/Ubuntu-Th");
+            QFontDatabase::addApplicationFont(":/fonts/UbuntuMono-B");
+            QFontDatabase::addApplicationFont(":/fonts/UbuntuMono-BI");
+            QFontDatabase::addApplicationFont(":/fonts/UbuntuMono-R");
+            QFontDatabase::addApplicationFont(":/fonts/UbuntuMono-RI");
+        }
 
         qApp->setFont(QFont(family,10,500),"QWidget");
     }

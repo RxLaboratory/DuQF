@@ -18,6 +18,9 @@
         <file alias="load-file">resources/icons/load-file.svg</file>
         <file alias="property">resources/icons/property.svg</file>
         <file alias="save-file">resources/icons/save-file.svg</file>
+        <file alias="check">resources/icons/check.svg</file>
+        <file alias="move-down">resources/icons/move-down.svg</file>
+        <file alias="move-up">resources/icons/move-up.svg</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="splash">resources/images/splash.png</file>
@@ -25,5 +28,21 @@
     <qresource prefix="/styles">
         <file alias="default">resources/styles/style.css</file>
         <file alias="default-values">resources/styles/style-values.rui</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file alias="Ubuntu-B">resources/fonts/Ubuntu-B.ttf</file>
+        <file alias="Ubuntu-BI">resources/fonts/Ubuntu-BI.ttf</file>
+        <file alias="Ubuntu-C">resources/fonts/Ubuntu-C.ttf</file>
+        <file alias="Ubuntu-L">resources/fonts/Ubuntu-L.ttf</file>
+        <file alias="Ubuntu-LI">resources/fonts/Ubuntu-LI.ttf</file>
+        <file alias="Ubuntu-M">resources/fonts/Ubuntu-M.ttf</file>
+        <file alias="Ubuntu-MI">resources/fonts/Ubuntu-MI.ttf</file>
+        <file alias="UbuntuMono-B">resources/fonts/UbuntuMono-B.ttf</file>
+        <file alias="UbuntuMono-BI">resources/fonts/UbuntuMono-BI.ttf</file>
+        <file alias="UbuntuMono-R">resources/fonts/UbuntuMono-R.ttf</file>
+        <file alias="UbuntuMono-RI">resources/fonts/UbuntuMono-RI.ttf</file>
+        <file alias="Ubuntu-R">resources/fonts/Ubuntu-R.ttf</file>
+        <file alias="Ubuntu-RI">resources/fonts/Ubuntu-RI.ttf</file>
+        <file alias="Ubuntu-Th">resources/fonts/Ubuntu-Th.ttf</file>
     </qresource>
 </RCC>

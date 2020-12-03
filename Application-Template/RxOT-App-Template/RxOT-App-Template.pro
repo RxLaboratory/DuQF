@@ -24,7 +24,8 @@ SOURCES += \
     duqf-widgets/settingswidget.cpp \
     duqf-widgets/toolbarspacer.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    testwidgets.cpp
 
 HEADERS += \
     duqf-app/app-style.h \
@@ -35,13 +36,15 @@ HEADERS += \
     duqf-widgets/appearancesettingswidget.h \
     duqf-widgets/settingswidget.h \
     duqf-widgets/toolbarspacer.h \
-    mainwindow.h
+    mainwindow.h \
+    testwidgets.h
 
 FORMS += \
     duqf-widgets/appearancesettingswidget.ui \
     duqf-widgets/settingswidget.ui \
     duqf-widgets/toolbarspacer.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    testwidgets.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

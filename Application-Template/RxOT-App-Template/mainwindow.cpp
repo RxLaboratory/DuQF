@@ -7,6 +7,12 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) :
     setupUi(this);
     // Add default stuff
     duqf_initUi();
+
+    TestWidgets *tw = new TestWidgets();
+    settingsWidget->addPage(tw, "UI Demo", QIcon(":/icons/property"));
+
+    // Set style
+    duqf_setStyle();
 }
 
 void MainWindow::duqf_initUi()
@@ -102,27 +108,12 @@ void MainWindow::duqf_initUi()
 
     // ========= SETTINGS ========
 
-    SettingsWidget *settingsWidget = new SettingsWidget();
+    settingsWidget = new SettingsWidget();
     duqf_settingsLayout->addWidget(settingsWidget);
-
-    // ======== STYLE ========
-
-    //Re-set StyleSheet
-    QString cssFile = settings.value("appearance/cssFile", ":/styles/default").toString();
-    DuUI::updateCSS(cssFile);
-    //and font
-    DuUI::setFont();
-    //and tool buttons
-    int styleIndex = settings.value("appearance/toolButtonStyle", 2).toInt();
-    Qt::ToolButtonStyle style = Qt::ToolButtonTextUnderIcon;
-    if (styleIndex == 0) style = Qt::ToolButtonIconOnly;
-    else if (styleIndex == 1) style = Qt::ToolButtonTextOnly;
-    else if (styleIndex == 2) style = Qt::ToolButtonTextUnderIcon;
-    else if (styleIndex == 3) style = Qt::ToolButtonTextBesideIcon;
-    DuUI::setToolButtonStyle(style);
-
-
     duqf_closeSettingsButton->setObjectName("windowButton");
+
+    AppearanceSettingsWidget *asw = new AppearanceSettingsWidget();
+    settingsWidget->addPage(asw, "Appearance", QIcon(":/icons/color"));
 
     // ====== CONNECTIONS ======
     connect(duqf_maximizeButton,SIGNAL(clicked()),this,SLOT(duqf_maximize()));
@@ -132,6 +123,34 @@ void MainWindow::duqf_initUi()
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(duqf_settingsButton, SIGNAL(clicked(bool)), this, SLOT(duqf_settings(bool)));
     connect(duqf_closeSettingsButton, SIGNAL(clicked()), this, SLOT(duqf_closeSettings()));
+}
+
+void MainWindow::duqf_setStyle()
+{
+    // ======== STYLE ========
+
+    //Re-set StyleSheet
+    QString cssFile = settings.value("appearance/cssFile", ":/styles/default").toString();
+    QString style = settings.value("appearance/style","Default").toString();
+    if (cssFile != "")
+    {
+        DuUI::updateCSS(cssFile);
+    }
+    else
+    {
+        DuUI::updateCSS("");
+        qApp->setStyle(QStyleFactory::create(style));
+    }
+    //and font
+    DuUI::setFont(settings.value("appearance/font", "Ubuntu").toString());
+    //and tool buttons
+    int styleIndex = settings.value("appearance/toolButtonStyle", 2).toInt();
+    Qt::ToolButtonStyle toolStyle = Qt::ToolButtonTextUnderIcon;
+    if (styleIndex == 0) toolStyle = Qt::ToolButtonIconOnly;
+    else if (styleIndex == 1) toolStyle = Qt::ToolButtonTextOnly;
+    else if (styleIndex == 2) toolStyle = Qt::ToolButtonTextUnderIcon;
+    else if (styleIndex == 3) toolStyle = Qt::ToolButtonTextBesideIcon;
+    DuUI::setToolButtonStyle(toolStyle);
 }
 
 void MainWindow::duqf_maximize(bool max)

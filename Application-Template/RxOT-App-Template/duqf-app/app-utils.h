@@ -105,7 +105,7 @@ public:
         qDebug() << "Initializing application";
 
         //set style
-        DuUI::updateCSS(":/styles/default", QString(STR_INTERNALNAME).toLower());
+        DuUI::updateCSS(":/styles/default");
 
         //create splash screen
         QPixmap pixmap(SPLASH_IMAGE);

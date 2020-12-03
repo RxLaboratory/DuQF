@@ -4,9 +4,13 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
     QWidget(parent)
 {
     setupUi(this);
+}
 
-    AppearanceSettingsWidget *appearanceWidget = new AppearanceSettingsWidget();
-    appearanceLayout->addWidget(appearanceWidget);
+void SettingsWidget::addPage(QWidget *ui, QString title, QIcon icon)
+{
+    mainStackWidget->addWidget(ui);
+    QListWidgetItem *tab = new QListWidgetItem(icon,title);
+    mainList->addItem(tab);
 }
 
 void SettingsWidget::on_mainList_currentRowChanged(int currentRow)

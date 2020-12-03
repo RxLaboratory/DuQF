@@ -27,6 +27,3 @@
 
 @small-button-size = 12px
 @very-small-button-size = 8px
-
-@bars-size = 15px
-@progress-size = 30px
