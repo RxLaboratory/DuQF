@@ -7,6 +7,7 @@
 #include "duqf-widgets/toolbarspacer.h"
 #include "duqf-widgets/settingswidget.h"
 #include "testwidgets.h"
+#include "testcustomwidgets.h"
 
 #include <QMouseEvent>
 #include <QLabel>

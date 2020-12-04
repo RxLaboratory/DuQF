@@ -206,35 +206,39 @@ QTextEdit:disabled, QLineEdit:disabled, QPlainTextEdit:disabled {
 /* SPIN Boxes */
 
 QSpinBox, QDoubleSpinBox {
-    background-color: @color-dark-grey;
-    color: @color-light-grey;
+    background-color: @color-very-dark-grey;
+    color: @color-less-light-grey;
     border:none;
     padding: @padding-small;
     border-radius: @padding-small;
 }
 
 QSpinBox:hover, QDoubleSpinBox:hover {
-    background-color: @color-very-dark-grey;
+    color: @color-light-grey;
 }
 
 QSpinBox::up-button, QDoubleSpinBox::up-button {
     border:none;
-    background-color:@color-dark-grey;
+    background-color:@color-very-dark-grey;
     border-radius: @margin;
     image:url(:/icons/move-up);
     width: @very-small-button-size;
     height: @very-small-button-size;
     padding:2px;
+    margin-top: 1px;
+    margin-right: 1px;
 }
 
 QSpinBox::down-button, QDoubleSpinBox::down-button {
     border:none;
-    background-color:@color-dark-grey;
+    background-color:@color-very-dark-grey;
     border-radius: @margin;
     image:url(:/icons/move-down);
     width: @very-small-button-size;
     height: @very-small-button-size;
     padding:2px;
+    margin-bottom: 1px;
+    margin-right: 1px;
 }
 
 QSpinBox::up-button:hover, QDoubleSpinBox::up-button:hover, QSpinBox::down-button:hover, QDoubleSpinBox::down-button:hover {
@@ -249,6 +253,13 @@ QSpinBox:disabled, QDoubleSpinBox:disabled {
 QSpinBox::up-button:disabled, QDoubleSpinBox::up-button:disabled, QSpinBox::down-button:disabled, QDoubleSpinBox::down-button:disabled {
     background-color: @color-dark-grey;
     image:none;
+}
+
+SliderSpinBox QSpinBox::down-button, SliderSpinBox QSpinBox::up-button {
+    image:none;
+    width:0px;
+    height: 0px;
+    padding:0px;
 }
 
 /* SCROLLBARS */
@@ -342,7 +353,7 @@ QSlider::handle:disabled {
 /* PROGRESSBARS */
 
 QProgressBar {
-        color: @color-light-grey;
+        color: @color-less-light-grey;
         border: none;
         background-color: @color-very-dark-grey;
         text-align: center;
@@ -350,19 +361,30 @@ QProgressBar {
 }
 
 QProgressBar::chunk {
-        background-color: @color-medium-grey;
+        background-color: @color-less-dark-grey;
 }
 
 QProgressBar:disabled {
     color: @color-medium-grey;
 }
 
-QSlider::handle:disabled {
-    background-color: @color-very-dark-grey;
-}
-
 QProgressBar::chunk:disabled {
         background-color: @color-less-dark-grey;
+}
+
+/* CUSTOM SLIDERS */
+
+ProgressSlider {
+    color: @color-light-grey;
+    border-radius: @padding-small;
+}
+
+ProgressSlider::chunk {
+    border-radius: @padding-small;
+}
+
+ProgressSlider::chunk:hover {
+    background-color: @color-less-light-grey;
 }
 
 /* LISTS */

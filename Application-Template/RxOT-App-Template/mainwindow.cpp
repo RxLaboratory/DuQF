@@ -11,6 +11,9 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) :
     TestWidgets *tw = new TestWidgets();
     settingsWidget->addPage(tw, "UI Demo", QIcon(":/icons/property"));
 
+    TestCustomWidgets *tc = new TestCustomWidgets();
+    settingsWidget->addPage(tc, "Custom Widgets", QIcon(":/icons/property"));
+
     // Set style
     duqf_setStyle();
 }
