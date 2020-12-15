@@ -182,7 +182,7 @@ bool duqf_processArgs(int argc, char *argv[], QStringList examples = QStringList
         }
         qInfo() << "General";
         qInfo() << "    -h / --help       Print basic options without launching the application";
-        qInfo().noquote() << "    See the documentation at " + URL_DOC + " for detailed descriptions of the options";
+        qInfo().noquote() << "    See the documentation at " + QString(URL_DOC) + " for detailed descriptions of the options";
         qInfo() << "    --no-banner       Hides the banner with product information and legal notice";
         foreach(QString h, helpStrings)
         {
