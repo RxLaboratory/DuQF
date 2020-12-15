@@ -68,6 +68,7 @@ win* {
     !build_pass:touch($$RC_FILE, DuF/version.h)
     # Enable console output
     CONFIG += console
+    msvc: LIBS += -luser32
 } else:unix {
     # Fix issue with c++ version used to compile Qt in some distros (Ubuntu) with Qt <= 5.12.
     # Need to check the version of c++ used with distros providing Qt > 5.12
