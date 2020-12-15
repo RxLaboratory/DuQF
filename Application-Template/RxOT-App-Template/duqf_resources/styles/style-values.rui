@@ -22,8 +22,10 @@
 
 @margin = 3px
 @padding-small = 5px
+@padding-medium = 7px
 @padding-large = 10px
 @padding-extra-large = 15px
 
+@big-button-size = 30px
 @small-button-size = 12px
 @very-small-button-size = 8px

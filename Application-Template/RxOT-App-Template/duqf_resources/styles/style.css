@@ -1,4 +1,4 @@
-/* MAIN */
+/* MAIN AND DIALOGS */
 
 *{
         outline: none;
@@ -10,12 +10,14 @@ MainWindow, QDialog {
 
 QWidget {
     font-weight:500;
+    background-color: @color-dark-grey;
 }
 
 /* LABELS */
 
 QLabel {
     color: @color-less-light-grey;
+    background: none;
 }
 
 QLabel:disabled {
@@ -58,6 +60,22 @@ QToolButton::menu-indicator {
     image: none;
 }
 
+QToolButton[popupMode="1"] { /* only for MenuButtonPopup */
+    padding-right: @padding-extra-large;
+}
+
+QToolButton::menu-button {
+  border-top-right-radius: @padding-small;
+  border-bottom-right-radius: @padding-small;
+  border-left: 1px solid @color-medium-grey;
+}
+
+QToolButton::menu-arrow {
+  image: url(":/icons/select");
+  width: @very-small-button-size;
+  height: @very-small-button-size;
+}
+
 QToolButton:hover {
     background-color: @color-medium-grey;
 }
@@ -71,55 +89,66 @@ QToolButton:disabled {
     color: @color-medium-grey;
 }
 
-/* CHECKBOXES */
+/* CHECKBOXES AND RADIOBUTTONS */
 
-QCheckBox {
+QCheckBox, QRadioButton {
     border-radius: @padding-small;
     padding: @padding-small;
     border:none;
     color: @color-light-grey;
+    background: none;
 }
 
-QCheckBox:hover {
+QCheckBox:hover, QRadioButton:hover {
     background-color: @color-medium-grey;
 }
 
-QCheckBox:pressed {
+QCheckBox:pressed, QRadioButton:pressed {
     background-color: @color-abyss-grey;
 }
 
-QCheckBox::indicator {
+QCheckBox::indicator, QRadioButton::indicator {
     background-color: @color-very-dark-grey;
-    border-radius: @padding-small;
     border: @margin solid @color-light-blue;
     image:none;
     width: @very-small-button-size;
     height: @very-small-button-size;
 }
 
-QCheckBox::indicator:pressed {
+QCheckBox::indicator {
+    border-radius: @padding-small;
+}
+
+QRadioButton::indicator {
+    border-radius: @padding-medium;
+}
+
+QCheckBox::indicator:pressed, QRadioButton::indicator:pressed {
     background-color: @color-light-green;
     border-color: @color-dark-green;
 }
 
-QCheckBox::indicator:checked {
-    image:url(:/icons/check);
+QCheckBox::indicator:checked, QRadioButton::indicator:checked {
     background-color: @color-light-green;
     border-color: @color-light-green;
 }
 
-QCheckBox::indicator:checked:pressed {
+QCheckBox::indicator:checked {
+    image:url(:/icons/check);
+}
+
+QCheckBox::indicator:checked:pressed, QRadioButton::indicator:checked:pressed {
     image:none;
     background-color: @color-light-red;
     border-color: @color-dark-blue;
 }
 
-QCheckBox:disabled {
-    background-color: @color-dark-grey;
+QCheckBox:disabled, QRadioButton:disabled {
+    background: none;
     color: @color-medium-grey;
 }
 
-QCheckBox::indicator:disabled {
+QCheckBox::indicator:disabled, QRadioButton::indicator:disabled {
     border-color: @color-medium-grey;
     background-color: @color-medium-grey;
 }
@@ -135,8 +164,8 @@ QComboBox {
 }
 
 QComboBox::item {
-    background-color: @color-medium-grey;
-    color: @color-very-dark-grey;
+    background-color: @color-less-dark-grey;
+    color: @color-light-grey;
 }
 
 QComboBox:hover {
@@ -145,6 +174,7 @@ QComboBox:hover {
 
 QComboBox::item:selected{
     color: @color-light-grey;
+    background-color: @color-very-dark-grey;
     border:none;
 }
 
@@ -168,9 +198,9 @@ QComboBox::down-arrow {
 }
 
 QComboBox QAbstractItemView {
-    background-color: @color-medium-grey;
+    background-color: @color-less-dark-grey;
     selection-color: @color-light-grey;
-    selection-background-color: @color-medium-grey;
+    selection-background-color: @color-very-dark-grey;
     padding-left: @padding-large;
     border:none;
 }
@@ -192,6 +222,8 @@ QTextEdit, QLineEdit, QPlainTextEdit {
     border:none;
     padding: @padding-small;
     border-radius: @padding-small;
+    selection-color: @color-light-grey;
+    selection-background-color: @color-dark-blue;
 }
 
 QTextEdit:hover, QLineEdit:hover, QPlainTextEdit:hover, QTextEdit:focus, QLineEdit:focus, QPlainTextEdit:focus {
@@ -387,6 +419,56 @@ ProgressSlider::chunk:hover {
     background-color: @color-less-light-grey;
 }
 
+/* SPLITTERS */
+
+QSplitter {
+    background-color: @color-very-dark-grey
+}
+
+QSplitter::handle {
+    image: none;
+}
+
+/* TABS */
+
+QTabWidget {
+    background-color: @color-dark-grey;
+}
+
+QTabWidget::pane { /* The tab widget frame */
+    border:none;
+    background-color: @color-dark-grey;
+}
+
+QTabBar::tab {
+    background-color: @color-very-dark-grey;
+    color: @color-medium-grey;
+    border: none;
+    padding: @padding-small;
+}
+
+QTabBar::tab:selected {
+        background-color: @color-dark-grey;
+        color: @color-less-light-grey;
+}
+
+QTabBar::tab:hover {
+        background-color: @color-medium-grey;
+        color: @color-light-grey;
+}
+
+QTabBar::close-button {
+    border-radius: @padding-small;
+    image: url(:/icons/remove);
+    width: @very-small-button-size;
+    height: @very-small-button-size;
+    padding: @margin;
+}
+
+QTabBar::close-button:hover {
+    background-color: @color-very-dark-grey;
+}
+
 /* LISTS */
 
 QListWidget {
@@ -444,13 +526,13 @@ QHeaderView::section:vertical {
 /* MENUS */
 
 QMenu {
-  background-color: @color-medium-grey;
+  background-color: @color-less-dark-grey;
   margin: @padding-large;
   border:none;
 }
 
 QMenu::item {
-    color: @color-very-dark-grey;
+    color: @color-light-grey;
     padding-left: 23px;
     padding-top: @padding-small;
     padding-bottom: @padding-small;
@@ -458,12 +540,13 @@ QMenu::item {
 
 QMenu::item:selected {
     color: @color-light-grey;
+    background-color: @color-very-dark-grey;
     border:none;
 }
 
 QMenu::separator {
   height: 1px;
-  background-color: @color-less-dark-grey;
+  background-color: @color-darker-grey;
   margin-top: @padding-small;
   margin-bottom: @padding-small;
 }
@@ -495,20 +578,26 @@ QToolBar QToolButton:pressed {
     background-color: @color-abyss-grey;
 }
 
-QToolBar QLabel {
-    color: @color-light-grey;
-}
-
 QToolBar QToolButton:disabled {
     background: @color-medium-grey;
     color: @color-less-light-grey;
+}
+
+QToolBar QLabel {
+    color: @color-light-grey;
 }
 
 /* STATUSBAR */
 
 QStatusBar {
     background-color: @color-very-dark-grey;
+    color: @color-less-light-grey;
     padding: @margin;
+}
+
+QStatusBar QWidget {
+    background: none;
+    color: @color-less-light-grey;
 }
 
 QStatusBar QLabel {
@@ -542,11 +631,17 @@ QStatusBar QToolButton:pressed {
 /* SPLASH SCREEN */
 
 QSplashScreen QProgressBar {
-    height: @progress-size;
+    height: @big-button-size;
     text-align: left;
 }
 
 QSplashScreen QLabel {
     background: transparent;
     color: @color-dark-grey;
+}
+
+/* DUQF CUSTOM WIDGETS */
+
+#duqf_block {
+    background-color: @color-very-dark-grey;
 }

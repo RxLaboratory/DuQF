@@ -14,13 +14,7 @@ int main(int argc, char *argv[])
     DuApplication a(argc, argv);
 
     // process CLI arguments
-    if ( processArgs(argc, argv) ) return 0;
-
-    // settings
-    QCoreApplication::setOrganizationName(STR_COMPANYNAME);
-    QCoreApplication::setOrganizationDomain(STR_COMPANYDOMAIN);
-    QCoreApplication::setApplicationName(STR_PRODUCTNAME);
-    QCoreApplication::setApplicationVersion(STR_VERSION);
+    if ( duqf_processArgs(argc, argv) ) return 0;
 
     // show splashscreen
     a.showSplashScreen();

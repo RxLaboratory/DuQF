@@ -76,4 +76,4 @@ win* {
 }
 
 RESOURCES += \
-    resources.qrc
+    duqf_resources.qrc

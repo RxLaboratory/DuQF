@@ -113,6 +113,12 @@ public:
 
         //set app icon
         qApp->setWindowIcon(QIcon(APP_ICON));
+
+        // settings
+        QCoreApplication::setOrganizationName(STR_COMPANYNAME);
+        QCoreApplication::setOrganizationDomain(STR_COMPANYDOMAIN);
+        QCoreApplication::setApplicationName(STR_PRODUCTNAME);
+        QCoreApplication::setApplicationVersion(STR_VERSION);
     }
 
     DuSplashScreen *splashScreen() const
@@ -131,7 +137,7 @@ private:
 };
 
 // Process the CLI arguments
-bool processArgs(int argc, char *argv[])
+bool duqf_processArgs(int argc, char *argv[], QStringList examples = QStringList(), QStringList helpStrings = QStringList())
 {
     bool nobanner = false;
     bool help = false;
@@ -169,16 +175,19 @@ bool processArgs(int argc, char *argv[])
 
     if (help)
     {
-        qInfo() << "Application Description.";
-        qInfo() << "Usage: RxOT [options] inputFile1 [[options] inputFile2 ... [options] inputFileN]";
-        qInfo() << "";
-        qInfo() << "Example: add a PNG sequence and set its framerate:";
-        qInfo() << "    DuME -framerate 29.97 \"image sequence_0001.png\"";
-        qInfo() << "";
+        qInfo().noquote() << STR_PRODUCTDESCRIPTION;
+        foreach(QString example, examples)
+        {
+            qInfo() << example;
+        }
         qInfo() << "General";
         qInfo() << "    -h / --help       Print basic options without launching the application";
-        qInfo() << "    See the documentation at https://url-doc for detailed descriptions of the options";
+        qInfo().noquote() << "    See the documentation at " + URL_DOC + " for detailed descriptions of the options";
         qInfo() << "    --no-banner       Hides the banner with product information and legal notice";
+        foreach(QString h, helpStrings)
+        {
+            qInfo() << h;
+        }
 #ifdef Q_OS_WIN
         qInfo() << "    --hide-console    Hides the console when starting the application using command line arguments";
 #endif
