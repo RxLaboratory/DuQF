@@ -18,6 +18,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    duqf-app/app-style.cpp \
     duqf-utils/language-utils.cpp \
     duqf-utils/utils.cpp \
     duqf-widgets/appearancesettingswidget.cpp \
