@@ -48,7 +48,7 @@
       <number>10</number>
      </property>
      <item>
-      <widget class="QWidget" name="" native="true">
+      <widget class="QWidget" name="widget" native="true">
        <layout class="QFormLayout" name="formLayout">
         <property name="horizontalSpacing">
          <number>3</number>
@@ -82,7 +82,7 @@
             <string>Item 1</string>
            </property>
            <property name="icon">
-            <iconset resource="resources.qrc">
+            <iconset resource="duqf_resources.qrc">
              <normaloff>:/icons/load-file</normaloff>:/icons/load-file</iconset>
            </property>
           </item>
@@ -156,7 +156,7 @@
            <string>Text</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset resource="duqf_resources.qrc">
             <normaloff>:/icons/load-file</normaloff>:/icons/load-file</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -177,7 +177,7 @@
            <string>CheckBox</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset resource="duqf_resources.qrc">
             <normaloff>:/icons/load-file</normaloff>:/icons/load-file</iconset>
           </property>
          </widget>
@@ -237,7 +237,7 @@
            <string>PushButton</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset resource="duqf_resources.qrc">
             <normaloff>:/icons/load-file</normaloff>:/icons/load-file</iconset>
           </property>
          </widget>
@@ -290,7 +290,7 @@
             <string>Item</string>
            </property>
            <property name="icon">
-            <iconset resource="resources.qrc">
+            <iconset resource="duqf_resources.qrc">
              <normaloff>:/icons/load-file</normaloff>:/icons/load-file</iconset>
            </property>
           </item>
@@ -333,7 +333,7 @@
            <string>PushButton</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset resource="duqf_resources.qrc">
             <normaloff>:/icons/load-file</normaloff>:/icons/load-file</iconset>
           </property>
          </widget>
@@ -351,7 +351,7 @@
            <string>Test</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset resource="duqf_resources.qrc">
             <normaloff>:/icons/load-file</normaloff>:/icons/load-file</iconset>
           </property>
          </widget>
@@ -449,7 +449,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="duqf_resources.qrc"/>
  </resources>
  <connections/>
 </ui>

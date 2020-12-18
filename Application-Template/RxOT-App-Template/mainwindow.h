@@ -16,6 +16,7 @@
 #include <QDesktopServices>
 #include <QtDebug>
 #include <QSettings>
+#include <QProcess>
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
@@ -58,6 +59,7 @@ private slots:
     void duqf_doc();
     void duqf_settings(bool checked = true);
     void duqf_closeSettings();
+    void duqf_reinitSettings();
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);

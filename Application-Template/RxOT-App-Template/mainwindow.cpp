@@ -127,6 +127,7 @@ void MainWindow::duqf_initUi()
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(duqf_settingsButton, SIGNAL(clicked(bool)), this, SLOT(duqf_settings(bool)));
     connect(duqf_closeSettingsButton, SIGNAL(clicked()), this, SLOT(duqf_closeSettings()));
+    connect(duqf_reinitSettingsButton, SIGNAL(clicked()), this, SLOT(duqf_reinitSettings()));
 }
 
 void MainWindow::duqf_setStyle()
@@ -212,6 +213,14 @@ void MainWindow::duqf_settings(bool checked)
 void MainWindow::duqf_closeSettings()
 {
     duqf_settings(false);
+}
+
+void MainWindow::duqf_reinitSettings()
+{
+    settings.clear();
+    settings.sync();
+    qApp->quit();
+    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)

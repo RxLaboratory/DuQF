@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/icons">
-        <file alias="app">duqf_resources/icons/icon.svg</file>
         <file alias="maximize">duqf_resources/icons/maximize.svg</file>
         <file alias="minimize">duqf_resources/icons/minimize.svg</file>
         <file alias="quit">duqf_resources/icons/quit.svg</file>
@@ -21,10 +20,10 @@
         <file alias="check">duqf_resources/icons/check.svg</file>
         <file alias="move-down">duqf_resources/icons/move-down.svg</file>
         <file alias="move-up">duqf_resources/icons/move-up.svg</file>
+        <file alias="remove">duqf_resources/icons/remove.svg</file>
+        <file alias="reinit">duqf_resources/icons/reinit.svg</file>
     </qresource>
-    <qresource prefix="/images">
-        <file alias="splash">duqf_resources/images/splash.png</file>
-    </qresource>
+    <qresource prefix="/images"/>
     <qresource prefix="/styles">
         <file alias="default">duqf_resources/styles/style.css</file>
         <file alias="default-values">duqf_resources/styles/style-values.rui</file>
