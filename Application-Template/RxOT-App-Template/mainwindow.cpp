@@ -267,3 +267,8 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
   }
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QFontDatabase::removeAllApplicationFonts();
+    event->accept();
+}

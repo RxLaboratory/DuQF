@@ -62,6 +62,7 @@ private slots:
     void duqf_reinitSettings();
 
 protected:
+    void closeEvent(QCloseEvent *event);
     bool eventFilter(QObject *obj, QEvent *event);
 };
 #endif // MAINWINDOW_H
