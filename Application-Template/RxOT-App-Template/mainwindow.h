@@ -17,6 +17,7 @@
 #include <QtDebug>
 #include <QSettings>
 #include <QProcess>
+#include <QMessageBox>
 
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
