@@ -8,7 +8,7 @@ class DuQFSlider : public QProgressBar
 {
         Q_OBJECT
 public:
-    DuQFSlider();
+    DuQFSlider(QWidget *parent = nullptr);
 
     QString prefix() const;
     void setPrefix(const QString &prefix);

@@ -1,6 +1,7 @@
 #include "duqfslider.h"
 
-DuQFSlider::DuQFSlider()
+DuQFSlider::DuQFSlider(QWidget *parent):
+    QProgressBar(parent)
 {
     setFormat("");
     _prefix = "";

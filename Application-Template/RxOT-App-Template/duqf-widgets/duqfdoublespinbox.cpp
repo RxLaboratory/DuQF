@@ -1,6 +1,7 @@
 #include "duqfdoublespinbox.h"
 
-DuQFDoubleSpinBox::DuQFDoubleSpinBox()
+DuQFDoubleSpinBox::DuQFDoubleSpinBox(QWidget *parent):
+    QStackedWidget( parent )
 {
     setupUi();
     connectEvents();
@@ -140,6 +141,7 @@ void DuQFDoubleSpinBox::slider_valueChanged(double arg1)
 {
     QSignalBlocker b1(spinBox);
     spinBox->setValue( arg1 );
+    emit valueChanged(arg1);
 }
 
 void DuQFDoubleSpinBox::mouseReleaseEvent(QMouseEvent *event)

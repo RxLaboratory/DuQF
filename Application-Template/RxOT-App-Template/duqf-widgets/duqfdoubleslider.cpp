@@ -1,6 +1,7 @@
 #include "duqfdoubleslider.h"
 
-DuQFDoubleSlider::DuQFDoubleSlider()
+DuQFDoubleSlider::DuQFDoubleSlider(QWidget *parent):
+    QProgressBar( parent )
 {
     _locale = QLocale::system();
     setFormat("");
@@ -111,6 +112,9 @@ void DuQFDoubleSlider::mouseMoveEvent(QMouseEvent *event)
 
     if (invertedAppearance() == true)
         newVal = maximum() - newVal;
+
+    if (newVal > maximum()) newVal = maximum();
+    else if (newVal < minimum()) newVal = minimum();
 
     setValue(newVal);
 

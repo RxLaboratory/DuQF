@@ -11,7 +11,7 @@ class DuQFDoubleSpinBox : public QStackedWidget
 {
     Q_OBJECT
 public:
-    DuQFDoubleSpinBox();
+    DuQFDoubleSpinBox(QWidget *parent = nullptr);
 
     QString suffix() const;
     void setSuffix(const QString &suffix);

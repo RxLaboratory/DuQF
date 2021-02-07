@@ -12,7 +12,7 @@ class DuQFDoubleSlider : public QProgressBar
 {
         Q_OBJECT
 public:
-    DuQFDoubleSlider();
+    DuQFDoubleSlider(QWidget *parent = nullptr);
 
     void setValue(double v);
     double value() const;
