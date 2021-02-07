@@ -5,11 +5,18 @@ TestCustomWidgets::TestCustomWidgets(QWidget *parent) :
 {
     setupUi(this);
 
-    ProgressSlider *ps = new ProgressSlider();
+    DuQFDoubleSlider *ds = new DuQFDoubleSlider();
+    ds->setFormat("Value: %v");
+    formLayout->addRow(new QLabel("Double Slider"), ds);
+    DuQFSlider *ps = new DuQFSlider();
     ps->setFormat("Value: %v");
-    formLayout->addRow(new QLabel("Progress Slider"), ps);
-    SliderSpinBox *sp = new SliderSpinBox();
+    formLayout->addRow(new QLabel("Slider"), ps);
+    DuQFSpinBox *sp = new DuQFSpinBox();
     sp->setPrefix("Width: ");
-    sp->setSuffix("cm");
-    formLayout->addRow(new QLabel("Slider Spin Box"), sp);
+    sp->setSuffix("px");
+    formLayout->addRow(new QLabel("Spin Box"), sp);
+    DuQFDoubleSpinBox *dp = new DuQFDoubleSpinBox();
+    dp->setPrefix("Height: ");
+    dp->setSuffix("cm");
+    formLayout->addRow(new QLabel("Double Spin Box"), dp);
 }
