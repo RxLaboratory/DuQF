@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) :
+MainWindow::MainWindow(QStringList /*args*/, QWidget *parent) :
     QMainWindow(parent)
 {
     // Build the form
@@ -20,6 +20,9 @@ MainWindow::MainWindow(int argc, char *argv[], QWidget *parent) :
 
 void MainWindow::duqf_initUi()
 {
+        // ===== ABOUT ========
+    duqf_aboutDialog = new AboutDialog();
+
     // ===== TOOLBAR ======
 
     // remove right click on toolbar
@@ -67,16 +70,19 @@ void MainWindow::duqf_initUi()
     helpButton->setIcon(QIcon(":/icons/help"));
     helpButton->setToolTip("Get Help");
     helpButton->setPopupMode( QToolButton::InstantPopup );
-    QMenu *helpMenu = new QMenu(this);
+    helpMenu = new QMenu(this);
     if (QString(URL_DOC) != "")
     {
         QAction *docAction = new QAction(QIcon(":/icons/documentation"), "Help");
         docAction->setToolTip("Read the documentation");
         docAction->setShortcut(QKeySequence("F1"));
         helpMenu->addAction(docAction);
-        helpMenu->addSeparator();
         connect(docAction, SIGNAL(triggered()), this, SLOT(duqf_doc()));
     }
+    QAction *aboutAction = new QAction(QIcon(":/icons/about"), "About");
+    helpMenu->addAction(aboutAction);
+    connect(aboutAction, SIGNAL(triggered()), this, SLOT(duqf_about()));
+    helpMenu->addSeparator();
     bool chat = QString(URL_CHAT) != "";
     bool bugReport = QString(URL_BUGREPORT) != "";
     bool forum = QString(URL_FORUM) != "";
@@ -121,7 +127,9 @@ void MainWindow::duqf_initUi()
 
     // ====== CONNECTIONS ======
     connect(duqf_maximizeButton,SIGNAL(clicked()),this,SLOT(duqf_maximize()));
+#ifndef Q_OS_MAC
     connect(minimizeButton,SIGNAL(clicked()),this,SLOT(showMinimized()));
+#endif
     connect(quitButton,SIGNAL(clicked()),this,SLOT(close()));
 
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
@@ -150,12 +158,7 @@ void MainWindow::duqf_setStyle()
     DuUI::setFont(settings.value("appearance/font", "Ubuntu").toString());
     //and tool buttons
     int styleIndex = settings.value("appearance/toolButtonStyle", 2).toInt();
-    Qt::ToolButtonStyle toolStyle = Qt::ToolButtonTextUnderIcon;
-    if (styleIndex == 0) toolStyle = Qt::ToolButtonIconOnly;
-    else if (styleIndex == 1) toolStyle = Qt::ToolButtonTextOnly;
-    else if (styleIndex == 2) toolStyle = Qt::ToolButtonTextUnderIcon;
-    else if (styleIndex == 3) toolStyle = Qt::ToolButtonTextBesideIcon;
-    DuUI::setToolButtonStyle(toolStyle);
+    DuUI::setToolButtonStyle(styleIndex);
 }
 
 void MainWindow::duqf_maximize(bool max)
@@ -225,6 +228,11 @@ void MainWindow::duqf_reinitSettings()
         this->close();
         QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
+}
+
+void MainWindow::duqf_about()
+{
+    duqf_aboutDialog->show();
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)

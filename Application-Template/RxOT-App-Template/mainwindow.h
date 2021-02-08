@@ -6,6 +6,7 @@
 #include "duqf-app/app-style.h"
 #include "duqf-widgets/toolbarspacer.h"
 #include "duqf-widgets/settingswidget.h"
+#include "duqf-widgets/aboutdialog.h"
 #include "testwidgets.h"
 #include "testcustomwidgets.h"
 
@@ -24,7 +25,7 @@ class MainWindow : public QMainWindow, private Ui::MainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(int argc, char *argv[], QWidget *parent = nullptr);
+    explicit MainWindow(QStringList args, QWidget *parent = nullptr);
 
 private:
     // ========= RxOT UI ==============
@@ -47,9 +48,11 @@ private:
     QPoint duqf_dragPosition;
     QToolButton *duqf_maximizeButton;
     QToolButton *duqf_settingsButton;
+    AboutDialog *duqf_aboutDialog;
     QSettings settings;
     SettingsWidget *settingsWidget;
     QLabel *title;
+    QMenu *helpMenu;
 
 private slots:
     void duqf_maximize(bool max);
@@ -61,6 +64,7 @@ private slots:
     void duqf_settings(bool checked = true);
     void duqf_closeSettings();
     void duqf_reinitSettings();
+    void duqf_about();
 
 protected:
     void closeEvent(QCloseEvent *event);

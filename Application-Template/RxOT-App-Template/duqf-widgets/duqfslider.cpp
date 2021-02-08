@@ -62,6 +62,4 @@ void DuQFSlider::mouseMoveEvent(QMouseEvent *event)
     emit valueChanged(newVal);
     repaint();
     event->accept();
-
-    QProgressBar::mouseMoveEvent(event);
 }

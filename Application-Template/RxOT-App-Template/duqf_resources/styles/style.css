@@ -601,6 +601,10 @@ QToolBar QLabel {
     color: @color-light-grey;
 }
 
+QToolBar QToolButton:checked {
+    background-color: @color-dark-grey;
+}
+
 /* STATUSBAR */
 
 QStatusBar {

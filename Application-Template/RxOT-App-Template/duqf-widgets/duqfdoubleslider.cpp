@@ -119,6 +119,4 @@ void DuQFDoubleSlider::mouseMoveEvent(QMouseEvent *event)
     setValue(newVal);
 
     event->accept();
-
-    QProgressBar::mouseMoveEvent(event);
 }
