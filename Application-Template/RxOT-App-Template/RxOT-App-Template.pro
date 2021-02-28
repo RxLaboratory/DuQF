@@ -71,7 +71,7 @@ win* {
     # Add version and other metadata
     DISTFILES += app.rc
     RC_FILE = app.rc
-    !build_pass:touch($$RC_FILE, DuF/version.h)
+    !build_pass:touch($$RC_FILE, duqf-app/app-version.h)
     # Enable console output
     CONFIG += console
     msvc: LIBS += -luser32
@@ -80,9 +80,9 @@ win* {
     # Need to check the version of c++ used with distros providing Qt > 5.12
     equals(QT_MAJOR_VERSION, 5):lessThan(QT_MINOR_VERSION, 13)
     {
-        QMAKE_CXXFLAGS += "-fno-sized-deallocation"
-        # Ignore annoying errors on older versions of Qt
-        QMAKE_CXXFLAGS += -Wdeprecated-copy
+        QMAKE_CXXFLAGS += "-fno-sized-deallocation" \
+            "-Wdeprecated-copy" \ # Ignore annoying errors on older versions of Qt
+            "-Wdeprecated" # Ignore annoying errors on older versions of Qt
     }
 } else:macx {
     # Just in case...
